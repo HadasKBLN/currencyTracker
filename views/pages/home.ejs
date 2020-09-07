@@ -1,0 +1,486 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<% include ../partials/head %>
+</head>
+<body onload="myRefresh()">
+
+    <!--========== HEADER ==========-->
+<header>
+<% include ../partials/header %>
+
+   <!-- Overlay -->
+  <div class="s-header-bg-overlay js__bg-overlay">
+    <!-- Nav -->
+    <nav class="s-header__nav js__scrollbar">
+      <div class="container-fluid">
+        <!-- Menu List -->
+        <ul class="list-unstyled s-header__nav-menu">
+          <li class="s-header__nav-menu-item">
+            <a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="/">Home</a>
+          </li>
+          <li class="s-header__nav-menu-item">
+            <a class="s-header__nav-menu-link s-header__nav-menu-link-divider -is-active" href="/liveRates">Live Exchange Rates</a>
+          </li>
+          <li class="s-header__nav-menu-item">
+            <a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="/transform">Currency Converter</a>
+          </li>
+          <li class="s-header__nav-menu-item">
+            <a class="s-header__nav-menu-link s-header__nav-menu-link-divider " href="/history">Historical Rates</a>
+          </li>
+          <li class="s-header__nav-menu-item">
+            <a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="/team">Team</a>
+          </li>
+        </ul>
+        <!-- End Menu List -->
+      </div>
+    </nav>
+    <!-- End Nav -->
+  </div>
+  <!-- End Overlay -->
+</header>
+<!--========== END HEADER ==========-->
+
+<!--========== PROMO BLOCK ==========-->
+      <div class="js__parallax-window" style="background: url(images/img/1920x1080/25.jpg) 50% 0 no-repeat fixed;">
+            <div class="g-container--md g-text-center--xs g-padding-y-150--xs">
+                <div class="g-margin-b-60--xs">
+                    <h1 class="g-font-size-40--xs g-font-size-50--sm g-font-size-70--md g-color--white g-letter-spacing--1 g-margin-b-30--xs">Live Exchange Rates</h1>
+                    <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--white-opacity g-letter-spacing--2"> Choose one of the currencies, and find its tedency at any priod of time from 1970 till now! </p>
+                </div>
+                <a href="#js__scroll-to-section">
+                    <span class="s-icon s-icon--md s-icon--white-brd g-radius--circle ti-angle-double-down"></span>
+                </a>
+            </div>
+        </div>
+    <!--========== END PROMO BLOCK ==========-->
+
+	<!--========== PAGE CONTENT ==========-->
+        <div class="g-container--md g-padding-y-80--xs g-padding-y-70--sm">
+			<div id="js__scroll-to-section" class="g-bg-color--sky-light">
+            <div class="g-padding-y-40--xs g-padding-y-30--sm">
+			 <div class="g-text-center--xs g-margin-b-10--xs">
+                    <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-50--xs">CURRENT CURRENCY RATES</p>
+                    <h3 class="g-font-size-32--xs g-font-size-36--md">Find Currency Rate</h3>
+			 </div>
+				<p class="g-text-center--xs g-margin-b-60--xs">
+					<%
+					var day = new Date().getDate();
+					var month = new Date().getMonth() +1;
+					var year = new Date().getFullYear();
+					var hour = new Date().getHours();
+					var minute = new Date().getMinutes();
+					var mili = new Date().getMilliseconds() %100;
+					%>
+					<span > last update : </span>
+					<span ><%= hour +" : "+ minute + " : " + mili + "\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0" + day + " / " + month + " / " + year %></span>
+				</p>
+				<div class="row g-margin-b-30--xs">
+					<div class="col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+						<div class="g-margin-b-20--xs">
+							<p class="g-text-center--xs g-font-size-18--xs g-font-size-18--md">Choose the main currency</br> (which all the currencies compared to) : </p>
+							<select id="selectCurrency" name="currencyRates" class="form-control s-form-v2__input g-radius--50">
+								<option value="USDEUR">Euro (EUR)</option>
+								<option value="USDAUD">Australian dollar (AUD)</option>
+								<option value="USDUAH">Ukrainian hryvnia (UAH)</option>
+								<option value="USDIRR">Iranian rial (IRR)</option>
+								<option selected value="USDUSD">United States dollar (USD)</option>
+								<option value="USDBRL">Brazilian real (BRL)</option>
+								<option value="USDDKK">Danish krone (DKK)</option>
+								<option value="USDZAR">South African rand (ZAR)</option>
+								<option value="USDINR">Indian rupee(INR)</option>
+								<option value="USDGBP">British pound (GBP)</option>
+								<option value="USDTRY">Turkish lira (TRY)</option>
+								<option value="USDILS">Israeli new shekel (ILS)</option>
+								<option value="USDJPY">Japanese yen (JPY)</option>
+								<option value="USDMXN">Mexican peso (MXN)</option>
+								<option value="USDNZD">New Zealand dollar (NZD)</option>
+								<option value="USDCZK">Czech koruna (CZK)</option>
+								<option value="USDKPW">North Korean won (KPW)</option>
+								<option value="USDCAD">Canadian dollar (CAD)</option>
+								<option value="USDCHF">Swiss franc (CHF)</option>
+								<option value="USDTHB">Thai baht (THB)</option></select>
+						</div>
+								
+					</div>
+				</div>
+				
+				<div class="g-text-center--xs">
+					<button type="submit" class="text-uppercase s-btn s-btn--md s-btn--primary-bg g-radius--50 g-padding-x-80--xs" onclick="ShowButton()"> Show </button>
+				</div>
+				<a class="tableLink" href="#js__scroll-to-table-section"></a>
+			</div>
+			</div>
+		</div>
+	
+	
+	<article>
+	
+    <div class="myDiv"></div>
+
+ <br />
+ <div id="js__scroll-to-table-section" class="g-container--md g-padding-y-80--xs g-padding-y-25--sm">
+ <table class="table table-striped">
+	 <tr style="background-color:#48D1CC">
+		 <th> State/Territory </th>
+		 <th> Currency name </th>
+		 <th> Currency symbol </th>
+		 <th> Current rate </th>
+	 </tr>
+	 <tr>
+  <td><span class="flagicon">
+      <span style="display:none">Austria</span>
+	  <img alt="Austria" src="//upload.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_Austria.svg/22px-Flag_of_Austria.svg.png" width="22" height="15" class="thumbborder" 
+      data-file-width="900" data-file-height="600" /></span> 
+      <b>Austria</b>
+  </td>
+  <td>Euro (EUR)</td>
+  <td>€</td>
+  <td id="EUR"><%= quetes["USDEUR"] %></td>
+  <tr>
+  <td><span class="flagicon">
+      <span style="display:none">Australia</span>
+	  <img alt="Australia" src="//upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Flag_of_Australia.svg/22px-Flag_of_Australia.svg.png" width="22" height="11" class="thumbborder" 
+	  data-file-width="1280" data-file-height="640" /></span> 
+	  <b>Australia</b>
+  </td>
+  <td>Australian dollar (AUD)</td>
+  <td>$</td>
+  <td id="AUD"><%= quetes["USDAUD"] %></td>
+</tr>
+<tr>
+<td><span class="flagicon">
+    <span style="display:none">Ukraine</span>
+	<img alt="Ukraine" src="//upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/22px-Flag_of_Ukraine.svg.png" width="22" height="15" class="thumbborder" 
+	data-file-width="1200" data-file-height="800" /></span> 
+	<b>Ukraine</b>
+</td>
+<td>Ukrainian hryvnia (UAH)</td>
+<td>₴</td>
+<td id="UAH"><%= quetes["USDUAH"] %></td>
+</tr>
+<tr>
+<td><span class="flagicon">
+    <span style="display:none">Iran</span>
+	<img alt="Iran" src="//upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Flag_of_Iran.svg/22px-Flag_of_Iran.svg.png" width="22" height="13" class="thumbborder" 
+	data-file-width="630" data-file-height="360" /></span> 
+	<b>Iran</b>
+</td>
+<td>Iranian rial (IRR)</td>
+<td>﷼</td>
+<td id="IRR"><%= quetes["USDIRR"] %></td>
+</tr>
+<tr>
+<td><span class="flagicon">
+    <span style="display:none">United States</span>
+    <img alt="United States" src="//upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/22px-Flag_of_the_United_States.svg.png" width="22" height="12" class="thumbborder" 
+     data-file-width="1235" data-file-height="650" /></span> 
+    <b>United States</b>
+</td>
+<td>United States dollar (USD)</td>
+<td>$</td>
+<td id="USD"><%= quetes["USDUSD"] %></td>
+</tr>
+<tr>
+<td><span class="flagicon">
+    <span style="display:none">Brazil</span>
+    <img alt="Brazil" src="//upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/22px-Flag_of_Brazil.svg.png" width="22" height="15" class="thumbborder" 
+	data-file-width="720" data-file-height="504" /></span> 
+	<b>Brazil</b>
+</td>
+<td>Brazilian real (BRL)</td>
+<td>R$</td>
+<td id="BRL"><%= quetes["USDBRL"] %></td>
+</tr>
+<tr>
+<td><span class="flagicon">
+    <span style="display:none">Denmark</span>
+	<img alt="Denmark" src="//upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Flag_of_Denmark.svg/21px-Flag_of_Denmark.svg.png" width="21" height="16" class="thumbborder" 
+	data-file-width="740" data-file-height="560" /></span> 
+	<b>Denmark</b>
+</td>
+<td>Danish krone (DKK)</td>
+<td>kr</td>
+<td id="DKK"><%= quetes["USDDKK"] %></td>
+</tr>
+<tr>
+<td><span class="flagicon">
+   <span style="display:none">South Africa</span>
+   <img alt="South Africa" src="//upload.wikimedia.org/wikipedia/commons/thumb/a/af/Flag_of_South_Africa.svg/22px-Flag_of_South_Africa.svg.png" width="22" height="15" class="thumbborder" 
+   data-file-width="900" data-file-height="600" /></span> 
+   <b>South Africa</b>
+</td>
+<td> South African rand (ZAR)</td>
+<td>R</td>
+<td id="ZAR"><%= quetes["USDZAR"] %></td>
+</tr>
+<tr>
+<td><span class="flagicon">
+    <span style="display:none">India</span>
+    <img alt="India" src="//upload.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_India.svg/22px-Flag_of_India.svg.png" width="22" height="15" class="thumbborder" 
+	 data-file-width="1350" data-file-height="900" /></span> 
+	 <b>India</b>
+</td>
+<td>Indian rupee(INR)</td>
+<td>₨</td>
+<td id="INR"><%= quetes["USDINR"] %></td>
+</tr>
+<tr>
+<td><span class="flagicon">
+    <span style="display:none">United Kingdom</span>
+    <img alt="United Kingdom" src="//upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/22px-Flag_of_the_United_Kingdom.svg.png" width="22" height="11" class="thumbborder" 
+	data-file-width="1200" data-file-height="600" /></span> 
+	<b>United Kingdom</b>
+</td>
+<td>British pound (GBP)</td>
+<td>£</td>
+<td id="GBP"><%= quetes["USDGBP"] %></td>
+</tr>
+<tr>
+<td><span class="flagicon">
+    <span style="display:none">Turkey</span>
+	<img alt="Turkey" src="//upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Flag_of_Turkey.svg/22px-Flag_of_Turkey.svg.png" width="22" height="15" class="thumbborder" 
+	data-file-width="1200" data-file-height="800" /></span> 
+	<b>Turkey</b>
+</td>
+<td>Turkish lira (TRY)</td>
+<td>₤</td>
+<td id="TRY"><%= quetes["USDTRY"] %></td>
+</tr>
+<tr>
+<td><span class="flagicon">
+    <span style="display:none">Greece</span>
+	<img alt="Greece" src="//upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_Greece.svg/22px-Flag_of_Greece.svg.png" width="22" height="15" class="thumbborder" 
+	data-file-width="600" data-file-height="400" /></span> 
+	<b>Greece</b>
+</td>
+<td>Euro (EUR)</td>
+<td>€</td>
+<td id="EUR2"><%= quetes["USDEUR"] %></td>
+</tr>
+<tr>
+<td><span class="flagicon">
+    <span style="display:none">Israel</span>
+    <img alt="Israel" src="//upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Flag_of_Israel.svg/22px-Flag_of_Israel.svg.png" width="22" height="16" class="thumbborder" 
+	 data-file-width="660" data-file-height="480" /></span> 
+	 <b>Israel</b></td>
+<td>Israeli new shekel (ILS)</td>
+<td>₪</td>
+<td id="ILS"><%= quetes["USDILS"] %></td>
+</tr>
+<tr>
+<td><span class="flagicon">
+    <span style="display:none">Japan</span>
+	<img alt="Japan" src="//upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Flag_of_Japan.svg/22px-Flag_of_Japan.svg.png" width="22" height="15" class="thumbborder" 
+	data-file-width="900" data-file-height="600" /></span> 
+	<b>Japan</b>
+</td>
+<td>Japanese yen (JPY)</td>
+<td>¥</td>
+<td id="JPY"><%= quetes["USDJPY"] %></td>
+</tr>
+<tr>
+<td><span class="flagicon">
+    <span style="display:none">Mexico</span>
+	<img alt="Mexico" src="//upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/22px-Flag_of_Mexico.svg.png" width="22" height="13" class="thumbborder" 
+	 data-file-width="840" data-file-height="480" /></span> 
+	 <b>Mexico</b>
+</td>
+<td>Mexican peso (MXN)</td>
+<td>$</td>
+<td id="MXN"><%= quetes["USDMXN"] %></td>
+</tr>
+<tr>
+<td><span class="flagicon">
+    <span style="display:none">New Zealand</span>
+	<img alt="New Zealand" src="//upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Flag_of_New_Zealand.svg/22px-Flag_of_New_Zealand.svg.png" width="22" height="11" class="thumbborder" 
+	 data-file-width="1200" data-file-height="600" /></span> 
+	 <b>New Zealand</b>
+</td>
+<td>New Zealand dollar (NZD)</td>
+<td>$</td>
+<td id="NZD"><%= quetes["USDNZD"] %></td>
+</tr>
+<tr>
+<td><span class="flagicon">
+    <span style="display:none">France</span>
+	<img alt="France" src="//upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/22px-Flag_of_France.svg.png" width="22" height="15" class="thumbborder" 
+	data-file-width="900" data-file-height="600" /></span> 
+	<b>France</b>
+</td>
+<td>Euro (EUR)</td>
+<td>€</td>
+<td id="EUR3"><%= quetes["USDEUR"] %></td>
+</tr>
+<tr>
+<td><span class="flagicon">
+    <span style="display:none">Czech Republic</span>
+	<img alt="Czech Republic" src="//upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Flag_of_the_Czech_Republic.svg/22px-Flag_of_the_Czech_Republic.svg.png" width="22" height="15" class="thumbborder" 
+	 data-file-width="900" data-file-height="600" /></span> 
+	 <b>Czech Republic</b>
+</td>
+<td>Czech koruna (CZK) </td>
+<td>Kč</td>
+<td id="CZK"><%= quetes["USDCZK"] %></td>
+</tr>
+<tr>
+<td><span class="flagicon">
+    <span style="display:none">Korea, North</span>
+	<img alt="Korea, North" src="//upload.wikimedia.org/wikipedia/commons/thumb/5/51/Flag_of_North_Korea.svg/22px-Flag_of_North_Korea.svg.png" width="22" height="11" class="thumbborder" 
+	 data-file-width="1600" data-file-height="800" /></span> 
+	 <b>Korea, North</b>
+</td>
+<td>North Korean won (KPW)</td>
+<td>₩</td>
+<td id="KPW"><%= quetes["USDKPW"] %></td>
+</tr>
+<tr>
+<td><span class="flagicon">
+    <span style="display:none">Canada</span>
+	<img alt="Canada" src="//upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Flag_of_Canada.svg/22px-Flag_of_Canada.svg.png" width="22" height="11" class="thumbborder" 
+	data-file-width="1000" data-file-height="500" /></span> 
+	<b>Canada</b>
+</td>
+<td>Canadian dollar (CAD)</td>
+<td>$</td>
+<td id="CAD"><%= quetes["USDCAD"] %></td>
+</tr>
+<tr>
+<td><span class="flagicon">
+   <span style="display:none">Switzerland</span>
+   <img alt="Switzerland" src="//upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Switzerland.svg/16px-Flag_of_Switzerland.svg.png" width="16" height="16" class="thumbborder" 
+    data-file-width="1000" data-file-height="1000" /></span> 
+	<b>Switzerland</b></td>
+<td>Swiss franc (CHF)</td>
+<td>Fr</td>
+<td id="CHF"><%= quetes["USDCHF"] %></td>
+</tr>
+<tr>
+<td><span class="flagicon">
+    <span style="display:none">Thailand</span>
+	<img alt="Thailand" src="//upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Flag_of_Thailand.svg/22px-Flag_of_Thailand.svg.png" width="22" height="15" class="thumbborder" 
+	 data-file-width="900" data-file-height="600" /></span> 
+	 <b>Thailand</b></td>
+<td>Thai baht (THB)</td>
+<td>฿</td>
+<td id="THB"><%= quetes["USDTHB"] %></td>
+</tr>
+  </table>  
+  </div>
+
+		<div class="g-container--md g-padding-y-80--xs g-padding-y-70--sm">
+			<div id="chartContainer" style="height: 500px; width:950px;">
+			</div>
+		</div>
+		<!-- Back To Top -->
+	<a href="javascript:void(0);" class="s-back-to-top js__back-to-top"></a>
+
+</article>
+<!--========== FOOTER ==========-->
+
+	<!-- Subscribe -->
+	<% include ../partials/subscribe %>
+	<!-- End Subscribe -->
+
+	<footer >
+		<% include ../partials/footer %>
+	</footer>
+
+<!--========== END FOOTER ==========-->
+
+<!--========== JAVASCRIPTS ==========-->
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script  type="text/javascript">
+
+	function autoRefresh()
+	{
+		 window.location.reload();
+	}
+	function myRefresh()
+	{
+		   currenciesRelativeTo();
+		   myGraph();
+		   var t = setTimeout(function(){ myRefresh(); }, 1000000000);
+	}
+	function myGraph() {
+	       var chart = new CanvasJS.Chart("chartContainer", {
+		   animationEnabled: true,
+		   axisY: { title: "Currency rates In relation to the dollar",
+			        scaleBreaks: {
+					type: "wavy",
+					customBreaks: [ { startValue: 30, endValue: 60 }, { startValue: 80, endValue: 880 }, { startValue: 910, endValue: 34400 }]}},
+			axisX: { title: "Currency name", interval: 1 },
+	        data: [{
+			         type: "column", 
+		             color: "#48D1CC",
+			dataPoints: [
+			        { y: <%= quetes["USDEUR"] %>, label: "EUR" },
+					{ y: <%= quetes["USDAUD"] %>, label:"AUD" },
+					{ y: <%= quetes["USDUAH"] %>, label:"UAH"  },
+					{ y: <%= quetes["USDIRR"] %>, label:"IRR"  },
+					{ y: <%= quetes["USDUSD"] %>, label:"USD"  },
+					{ y: <%= quetes["USDBRL"] %>, label:"BRL"  },
+					{ y: <%= quetes["USDDKK"] %>, label:"DKK"  },
+					{ y: <%= quetes["USDZAR"] %>, label:"ZAR"  },
+					{ y: <%= quetes["USDINR"] %>, label:"INR"  },
+					{ y: <%= quetes["USDGBP"] %>, label:"GBP"  },
+					{ y: <%= quetes["USDTRY"] %>, label:"TRY"  },
+					{ y: <%= quetes["USDILS"] %>, label:"ILS"  },
+					{ y: <%= quetes["USDJPY"] %>, label:"JPY"  },
+					{ y: <%= quetes["USDMXN"] %>, label:"MXN"  },
+					{ y: <%= quetes["USDNZD"] %>, label:"NZD"  },
+					{ y: <%= quetes["USDCZK"] %>, label:"CZK"  },
+					{ y: <%= quetes["USDKPW"] %>, label:"KPW"  },
+					{ y: <%= quetes["USDCAD"] %>, label:"CAD"  },
+					{ y: <%= quetes["USDCHF"] %>, label:"CHF"  },
+					{ y: <%= quetes["USDTHB"] %>, label:"THB"  },
+				]}]
+		});
+		chart.render();
+}
+function currenciesRelativeTo()
+	{
+	   var select = selectCurrency.value.toString();
+	   //autoRefresh();
+	   var tmp=["EUR","AUD","UAH","IRR","USD","BRL","DKK","ZAR","INR","GBP","TRY","ILS","JPY","MXN","NZD","CZK","KPW","CAD","CHF","THB","EUR2","EUR3"];
+	   for(var i=0;i<tmp.length;i++)
+	   {
+	     if(select=="USD"+tmp[i])
+		    var X =  document.getElementById(tmp[i]).innerHTML.toString();
+	   }
+	   for(var i=0;i<tmp.length;i++)
+	   {
+	      document.getElementById(tmp[i]).innerHTML=(1*document.getElementById(tmp[i]).innerHTML.toString()/X).toFixed(3);
+	   }
+	   myGraph();
+	
+	}
+
+	function ShowButton(){
+	currenciesRelativeTo();
+	$('.tableLink')[0].click();
+		}
+</script>
+
+        <!-- Vendor -->
+		
+        <script type="text/javascript" src="stylesheets/vendor/jquery.min.js"></script>
+        <script type="text/javascript" src="stylesheets/vendor/jquery.migrate.min.js"></script>
+        <script type="text/javascript" src="stylesheets/vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="stylesheets/vendor/jquery.smooth-scroll.min.js"></script>
+        <script type="text/javascript" src="stylesheets/vendor/jquery.back-to-top.min.js"></script>
+        <script type="text/javascript" src="stylesheets/vendor/scrollbar/jquery.scrollbar.min.js"></script>
+        <script type="text/javascript" src="stylesheets/vendor/jquery.parallax.min.js"></script>
+        <script type="text/javascript" src="stylesheets/vendor/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
+
+        <!-- General Components and Settings -->
+        <script type="text/javascript" src="javascripts/js/global.min.js"></script>
+        <script type="text/javascript" src="javascripts/js/components/header-sticky.min.js"></script>
+        <script type="text/javascript" src="javascripts/js/components/scrollbar.min.js"></script>
+        <script type="text/javascript" src="javascripts/js/components/faq.min.js"></script>
+        <!--========== END JAVASCRIPTS ==========-->
+
+
+
+</body>
+</html>

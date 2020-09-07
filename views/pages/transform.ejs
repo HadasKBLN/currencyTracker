@@ -1,0 +1,262 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<% include ../partials/head %>
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<% include ../partials/head %>
+</head>
+<body>
+<!--========== HEADER ==========-->
+<header>
+<% include ../partials/header %>
+
+<!-- Overlay -->
+  <div class="s-header-bg-overlay js__bg-overlay">
+    <!-- Nav -->
+    <nav class="s-header__nav js__scrollbar">
+      <div class="container-fluid">
+        <!-- Menu List -->
+        <ul class="list-unstyled s-header__nav-menu">
+          <li class="s-header__nav-menu-item">
+            <a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="/">Home</a>
+          </li>
+          <li class="s-header__nav-menu-item">
+            <a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="/liveRates">Live Exchange Rates</a>
+          </li>
+          <li class="s-header__nav-menu-item">
+            <a class="s-header__nav-menu-link s-header__nav-menu-link-divider -is-active" href="/transform">Currency Converter</a>
+          </li>
+          <li class="s-header__nav-menu-item">
+            <a class="s-header__nav-menu-link s-header__nav-menu-link-divider " href="/history">Historical Rates</a>
+          </li>
+          <li class="s-header__nav-menu-item">
+            <a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="/team">Team</a>
+          </li>
+        </ul>
+        <!-- End Menu List -->
+      </div>
+    </nav>
+    <!-- End Nav -->
+  </div>
+  <!-- End Overlay -->
+</header>
+<!--========== END HEADER ==========-->
+
+    <!--========== PROMO BLOCK ==========-->
+      <div class="js__parallax-window" style="background: url(images/img/1920x1080/24.jpg) 50% 0 no-repeat fixed;">
+            <div class="g-container--md g-text-center--xs g-padding-y-150--xs">
+                <div class="g-margin-b-60--xs">
+                    <h1 class="g-font-size-40--xs g-font-size-50--sm g-font-size-70--md g-color--white g-letter-spacing--1 g-margin-b-30--xs">CURRENCY CONVERTER</h1>
+                    <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--white-opacity g-letter-spacing--2"> Convert a currency to another currency real time rate. Max accuracy. </p>
+                </div>
+                <a href="#js__scroll-to-section">
+                    <span class="s-icon s-icon--md s-icon--white-brd g-radius--circle ti-angle-double-down"></span>
+                </a>
+            </div>
+        </div>
+    <!--========== END PROMO BLOCK ==========-->
+
+	<!--========== PAGE CONTENT ==========-->
+
+   <!-- Curency and date Form -->
+	<div class="g-container--md g-padding-y-80--xs g-padding-y-70--sm">
+		<div id="js__scroll-to-section" class="g-bg-color--sky-light">
+			<div class="g-padding-y-40--xs g-padding-y-40--sm">
+				<div class="g-text-center--xs g-margin-b-40--xs">
+					<p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-50--xs">CURRENCY CONVERTER</p>
+					<h3 class="g-font-size-32--xs g-font-size-36--md">Convert To Your Currencies</h3>
+				</div>
+				<form id="currencyExchange" action="/currencyExchange">
+					<div class="row g-margin-b-30--xs">
+						<div class="col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+							<div class="g-margin-b-40--xs">
+								<p class="g-font-size-18--xs g-font-size-18--md">Choose a source currency</p>
+								<select id="SelectSourceCurrency" name="sourceCurrency" class="form-control s-form-v2__input g-radius--50">
+									<option value="EUR">Euro (EUR)</option>
+									<option value="AUD">Australian dollar (AUD)</option>
+									<option value="UAH">Ukrainian hryvnia (UAH)</option>
+									<option value="IRR">Iranian rial (IRR)</option>
+									<option selected value="USD">United States dollar (USD)</option>
+									<option value="BRL">Brazilian real (BRL)</option>
+									<option value="DKK">Danish krone (DKK)</option>
+									<option value="ZAR">South African rand (ZAR)</option>
+									<option value="INR">Indian rupee(INR)</option>
+									<option value="GBP">British pound (GBP)</option>
+									<option value="TRY">Turkish lira (TRY)</option>
+									<option value="ILS">Israeli new shekel (ILS)</option>
+									<option value="JPY">Japanese yen (JPY)</option>
+									<option value="MXN">Mexican peso (MXN)</option>
+									<option value="NZD">New Zealand dollar (NZD)</option>
+									<option value="CZK">Czech koruna (CZK)</option>
+									<option value="KPW">North Korean won (KPW)</option>
+									<option value="CAD">Canadian dollar (CAD)</option>
+									<option value="CHF">Swiss franc (CHF)</option>
+									<option value="THB">Thai baht (THB)</option>
+								</select>
+							</div>
+
+							<div class="g-margin-b-40--xs">
+								<p class="g-font-size-18--xs g-font-size-18--md">Choose a target currency</p>
+								<select id="SelectTargetCurrency" name="targetCurrency" class="form-control s-form-v2__input g-radius--50">
+									<option value="EUR">Euro (EUR)</option>
+									<option value="AUD">Australian dollar (AUD)</option>
+									<option value="UAH">Ukrainian hryvnia (UAH)</option>
+									<option value="IRR">Iranian rial (IRR)</option>
+									<option selected value="USD">United States dollar (USD)</option>
+									<option value="BRL">Brazilian real (BRL)</option>
+									<option value="DKK">Danish krone (DKK)</option>
+									<option value="ZAR">South African rand (ZAR)</option>
+									<option value="INR">Indian rupee(INR)</option>
+									<option value="GBP">British pound (GBP)</option>
+									<option value="TRY">Turkish lira (TRY)</option>
+									<option value="ILS">Israeli new shekel (ILS)</option>
+									<option value="JPY">Japanese yen (JPY)</option>
+									<option value="MXN">Mexican peso (MXN)</option>
+									<option value="NZD">New Zealand dollar (NZD)</option>
+									<option value="CZK">Czech koruna (CZK)</option>
+									<option value="KPW">North Korean won (KPW)</option>
+									<option value="CAD">Canadian dollar (CAD)</option>
+									<option value="CHF">Swiss franc (CHF)</option>
+									<option value="THB">Thai baht (THB)</option>
+								</select>
+							</div>
+
+							<div class="g-margin-b-30--xs">
+								<p class="g-font-size-18--xs g-font-size-18--md">Enter amount to convert</p>
+								<input name="currencyAmount" type="text" id="SelectCurrencyAmount" value="1" class="form-control s-form-v2__input g-radius--50">
+							</div>
+						</div>
+					</div>
+
+					<div class="g-text-center--xs">
+						<button type="submit" class="text-uppercase s-btn s-btn--md s-btn--primary-bg g-radius--50 g-padding-x-80--xs"> Submit </button>
+					</div>
+					<a class="canculatedLink" href="#js__scroll-to-canculated-section"></a>
+				</form>
+			</div>
+		</div>
+		<!-- End curency and date Form -->
+	</div>
+
+	<div class="g-container--md g-padding-y-80--xs g-padding-y-70--sm">
+		<div id="js__scroll-to-canculated-section" class="g-bg-color--sky-light">
+			<div class="g-text-center--xs g-margin-b-40--xs">
+			<div class="g-padding-y-40--xs g-padding-y-40--sm">
+				<div class="g-margin-b-30--xs">
+					<b class="g-font-size-18--xs g-font-size-18--md" id="ResultSourceAmount" ></b>
+					<span id="ResultSourceCode" style="color:black"></span>
+				</div>
+				<div class="g-margin-b-30--xs">
+					<img alt="חץ" src="images/img/400x400/arrow.png" height=30px />
+				</div>
+				<div class="g-margin-b-30--xs">
+					<b id="ResultTargetAmount" style="font-size: 40px"></b>
+					<span id="ResultTargetCode" ></span>
+				</div>
+				<div class="g-margin-b-30--xs">
+					<img src="http://www.printime.co.il/image/users/16584/ftp/my_files/money/Coin-pr1.gif" />
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+	<!-- Back To Top -->
+	<a href="javascript:void(0);" class="s-back-to-top js__back-to-top"></a>
+
+	<!--========== END PAGE CONTENT ==========-->
+	<!--========== FOOTER ==========-->
+
+	<!-- Subscribe -->
+	<% include ../partials/subscribe %>
+	<!-- End Subscribe -->
+
+	<footer >
+		<% include ../partials/footer %>
+	</footer>
+	<!--========== END FOOTER ==========-->
+
+		<script type="text/javascript" src="~/Scripts/jquery.js"></script>
+		<script type="text/javascript" src="~/Scripts/data-table/jquery.dataTables.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+		<script type="text/javascript">
+    function checkingError()
+		{
+			if (!isFinite(1*SelectCurrencyAmount.value)) {
+				alert("Enter digits only!");
+				return false;
+			}
+			return true;
+		}
+
+
+	function currencyExchangeFunction(response) {
+
+		var USDSource=response["values"][0];
+		var USDTarget=response["values"][1];
+
+		document.getElementById('ResultSourceCode').innerHTML = SelectSourceCurrency.value;
+		document.getElementById('ResultSourceAmount').innerHTML = SelectCurrencyAmount.value+"\xa0\xa0\xa0\xa0\xa0";
+		document.getElementById('ResultTargetCode').innerHTML = SelectTargetCurrency.value;
+
+        var amountInDollars = 1 * SelectCurrencyAmount.value.toString() / USDSource;
+        var amountInNewCurrency = 1 * amountInDollars * USDTarget;
+
+        document.getElementById('ResultTargetAmount').innerHTML = "" +amountInNewCurrency.toFixed(3) +"\xa0\xa0\xa0\xa0\xa0";
+   }
+
+function reset() {
+    document.getElementById('ResultSourceCode').innerHTML = "";
+    document.getElementById('ResultTargetCode').innerHTML = "";
+    document.getElementById('ResultSourceAmount').innerHTML = "";
+    document.getElementById('ResultTargetAmount').innerHTML = "";
+    document.getElementById('SelectCurrencyAmount').value = "1";
+}
+
+   $(document).ready(function () {
+	            $('#currencyExchange').submit(function (event) {
+                event.preventDefault();
+				if(checkingError())
+				{
+					var form = $('#currencyExchange');
+					var formData = $(form).serialize();
+					var url = "" + $(form).attr('action') + formData;
+					$.ajax({
+					type: "POST",
+					url: url,
+					data: formData,
+					success: function (response) {
+					currencyExchangeFunction(response);
+					$('.canculatedLink')[0].click();
+					}});
+				}
+            });
+        });
+		</script>
+
+		<!--========== JAVASCRIPTS ==========-->
+		<!-- Vendor -->
+
+		<script type="text/javascript" src="stylesheets/vendor/jquery.min.js"></script>
+		<script type="text/javascript" src="stylesheets/vendor/jquery.migrate.min.js"></script>
+		<script type="text/javascript" src="stylesheets/vendor/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="stylesheets/vendor/jquery.smooth-scroll.min.js"></script>
+		<script type="text/javascript" src="stylesheets/vendor/jquery.back-to-top.min.js"></script>
+		<script type="text/javascript" src="stylesheets/vendor/scrollbar/jquery.scrollbar.min.js"></script>
+		<script type="text/javascript" src="stylesheets/vendor/jquery.parallax.min.js"></script>
+		<script type="text/javascript" src="stylesheets/vendor/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
+
+		<!-- General Components and Settings -->
+		<script type="text/javascript" src="javascripts/js/global.min.js"></script>
+		<script type="text/javascript" src="javascripts/js/components/header-sticky.min.js"></script>
+		<script type="text/javascript" src="javascripts/js/components/scrollbar.min.js"></script>
+		<script type="text/javascript" src="javascripts/js/components/faq.min.js"></script>
+		<!--========== END JAVASCRIPTS ==========-->
+
+
+</body>
+</html>

@@ -1,0 +1,305 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<% include ../partials/head %>
+
+</head>
+<body>
+<!--========== HEADER ==========-->
+<header>
+<% include ../partials/header %>
+
+   <!-- Overlay -->
+  <div class="s-header-bg-overlay js__bg-overlay">
+    <!-- Nav -->
+    <nav class="s-header__nav js__scrollbar">
+      <div class="container-fluid">
+        <!-- Menu List -->
+        <ul class="list-unstyled s-header__nav-menu">
+          <li class="s-header__nav-menu-item">
+            <a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="/">Home</a>
+          </li>
+          <li class="s-header__nav-menu-item">
+            <a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="/liveRates">Live Exchange Rates</a>
+          </li>
+          <li class="s-header__nav-menu-item">
+            <a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="/transform">Currency Converter</a>
+          </li>
+          <li class="s-header__nav-menu-item">
+            <a class="s-header__nav-menu-link s-header__nav-menu-link-divider -is-active" href="/history">Historical Rates</a>
+          </li>
+          <li class="s-header__nav-menu-item">
+            <a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="/team">Team</a>
+          </li>
+        </ul>
+        <!-- End Menu List -->
+      </div>
+    </nav>
+    <!-- End Nav -->
+  </div>
+  <!-- End Overlay -->
+</header>
+<!--========== END HEADER ==========-->
+
+    <!--========== PROMO BLOCK ==========-->
+      <div class="js__parallax-window" style="background: url(images/img/1920x1080/23.jpg) 50% 0 no-repeat fixed;">
+            <div class="g-container--md g-text-center--xs g-padding-y-150--xs">
+                <div class="g-margin-b-60--xs">
+                    <h1 class="g-font-size-40--xs g-font-size-50--sm g-font-size-70--md g-color--white g-letter-spacing--1 g-margin-b-30--xs">HISTORICAL CURRENCY RATES</h1>
+                    <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--white-opacity g-letter-spacing--2"> Choose one of the currencies, and find its tedency at any priod of time from 1970 till now! </p>
+                </div>
+                <a href="#js__scroll-to-section">
+                    <span class="s-icon s-icon--md s-icon--white-brd g-radius--circle ti-angle-double-down"></span>
+                </a>
+            </div>
+        </div>
+    <!--========== END PROMO BLOCK ==========-->
+
+	<!--========== PAGE CONTENT ==========-->
+	 <div class="g-container--md g-padding-y-80--xs g-padding-y-70--sm">
+		 <!-- Curency and date Form -->
+        <div id="js__scroll-to-section" class="g-bg-color--sky-light">
+            <div class="g-padding-y-40--xs g-padding-y-40--sm">
+                <div class="g-text-center--xs g-margin-b-40--xs">
+                    <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-50--xs">HISTORICAL CURRENCY RATES</p>
+                    <h3 class="g-font-size-32--xs g-font-size-36--md">Find Currency Tendency</h3>
+                </div>
+                <form id="currencyAndDates" action="/currencyAndDates">
+                    <div class="row g-margin-b-30--xs">
+                        <div class="col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+							<div class="g-margin-b-40--xs">
+							<p class="g-font-size-18--xs g-font-size-18--md">Choose a coin</p>
+							<select name="currency" class="form-control s-form-v2__input g-radius--50">
+								<optgroup label="מטבעות מרכזיים">
+									<option value="EUR">Euro (EUR)</option>
+									<option value="AUD">Australian dollar (AUD)</option>
+								    <option value="UAH">Ukrainian hryvnia (UAH)</option>
+									<option value="IRR">Iranian rial (IRR)</option>
+									<option selected value="USD">United States dollar (USD)</option>
+									<option value="BRL">Brazilian real (BRL)</option>
+									<option value="DKK">Danish krone (DKK)</option>
+									<option value="ZAR">South African rand (ZAR)</option>
+									<option value="INR">Indian rupee(INR)</option>
+									<option value="GBP">British pound (GBP)</option>
+									<option value="TRY">Turkish lira (TRY)</option>
+									<option value="ILS">Israeli new shekel (ILS)</option>
+								    <option value="JPY">Japanese yen (JPY)</option>
+									<option value="MXN">Mexican peso (MXN)</option>
+									<option value="NZD">New Zealand dollar (NZD)</option>
+									<option value="CZK">Czech koruna (CZK)</option>
+									<option value="KPW">North Korean won (KPW)</option>
+								    <option value="CAD">Canadian dollar (CAD)</option>
+									<option value="CHF">Swiss franc (CHF)</option>
+									<option value="THB">Thai baht (THB)</option>
+								 </optgroup>
+							 </select>
+							</div>
+								<div class="g-margin-b-30--xs">
+									<p class="g-font-size-18--xs g-font-size-18--md">Choose a start date</p>
+									<input type="date" class="form-control s-form-v2__input g-radius--50" id="startDate" name="startDate" min="1970-01-01" required onchange="startDateError(event);">
+								</div>
+							
+                            
+								<div class="g-margin-b-30--xs">
+									<p class="g-font-size-18--xs g-font-size-18--md">Choose an end date</p>
+									<input type="date" id="endDate" name="endDate" min="1970-01-01" required onchange="endDateError(event);" class="form-control s-form-v2__input g-radius--50">
+								</div>
+                        </div>
+                    </div>
+					
+                    <div class="g-text-center--xs">
+                        <button type="submit" class="text-uppercase s-btn s-btn--md s-btn--primary-bg g-radius--50 g-padding-x-80--xs"> Submit </button>
+                    </div>
+					<a class="tableLink" href="#js__scroll-to-table-section"></a>
+                </form>
+            </div>
+        </div>
+        <!-- End curency and date Form -->
+
+		 <!-- currency-date table-->
+		<div id="js__scroll-to-table-section" class="g-container--md g-padding-y-80--xs g-padding-y-25--sm">
+			<table id="rateTable" style="margin: 0 auto; height:500px; width:750px; background-color: #48D1CC;" class="table table-striped">  </table>
+		</div>
+		<!-- End currency-date table-->
+
+		 <!-- Graph -->
+		<div id="graph" class="g-margin-b-30--xs">
+			<div class="g-text-center--xs"> 
+				<button id="showGraph" type="button" class="text-uppercase s-btn s-btn--md s-btn--primary-bg g-radius--50 g-padding-x-80--xs">show  graph</button>
+			<div id="graphBlock"></div>
+			</div>
+		</div>
+		
+		<a class="chartLink" href="#chartContainer"></a>
+        <div id="chartContainer" style="margin: 0 auto; height:500px; width:750px;" > </div>
+		
+		<!--End graph -->
+	 </div>
+
+	<!-- Back To Top -->
+	<a href="javascript:void(0);" class="s-back-to-top js__back-to-top"></a>
+
+	<!--========== END PAGE CONTENT ==========-->
+	<!--========== FOOTER ==========-->
+
+	<!-- Subscribe -->
+	<% include ../partials/subscribe %>
+	<!-- End Subscribe -->
+
+	<footer >
+		<% include ../partials/footer %>
+	</footer>
+	<!--========== END FOOTER ==========-->
+		<script type="text/javascript" src="~/Scripts/jquery.js"></script>
+		<script type="text/javascript" src="~/Scripts/data-table/jquery.dataTables.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+
+		<!--========== JAVASCRIPTS ==========-->
+
+		<script type="text/javascript">
+
+        function ConvertToDate(str) {
+            str = str.split("-");
+            return new Date(str[0], str[1], str[2], 7);
+        }
+
+        function craeteTable(response) {
+		
+            var table = document.getElementById("rateTable");
+			table.innerHTML="";
+            var row = table.insertRow(0);
+
+            var date = row.insertCell(0);
+            date.innerHTML = "DATE";
+
+            var value = row.insertCell(1);
+            value.innerHTML = "CURRENCY";
+
+            for (var i = 1; i <= response["values"].length; i++) {
+                row = table.insertRow(i);
+                date = row.insertCell(0);
+                value = row.insertCell(1);
+                date.innerHTML = response["values"][i - 1]["date"];
+                value.innerHTML = response["values"][i - 1]["value"];
+            }
+        }
+
+        function createChart(response) {
+		$("#graph").hide();
+		$("#chartContainer").show();
+            var dps = [];
+            var chart = new CanvasJS.Chart("chartContainer", {
+                title: { text: "historical rate" },
+                animationEnabled: true,
+                axisY: { title: "Currency rates", includeZero: false },
+                axisX: { title: "Date", interval: 1 },
+                data: [{ type: "spline",color: "#48D1CC", dataPoints: dps }]
+            });
+            var xVal = 0;
+            var yVal = 100;
+            for (var i = 0; i < response["values"].length; i++) {
+                xVal = ConvertToDate(response["values"][i]["date"]);
+                yVal = response["values"][i]["value"];
+                dps.push({
+                    x: xVal,
+                    y: yVal
+                });
+            }
+            chart.render();
+        }
+
+		function startDateError(event) {
+			var tmp = document.getElementById("startDate").value;
+			var startDate = new Date(tmp);
+			var today = new Date();
+		
+			if (today.getTime() < startDate.getTime())
+			{
+				alert("There is no option to chose a future date");
+				document.getElementById("startDate").value = new Date();
+			}
+		}
+
+		function endDateError(event) {
+			var tmp = document.getElementById("endDate").value;
+			var endDate = new Date(tmp);
+			var today = new Date();
+
+			if (today.getTime() < endDate.getTime())
+			{
+				alert("There is no option to chose a future date");
+				document.getElementById("endDate").value = new Date();
+			}
+		}
+
+		function checkingError() {
+			var start = document.getElementById("startDate").value;
+			var startDate = new Date(start);
+			var end = document.getElementById("endDate").value;
+			var endDate = new Date(end);
+			if (endDate.getTime() < startDate.getTime())
+			{
+				alert("End date cannot be bigger the start date");
+				document.getElementById("endDate").value = new Date();
+				return false;
+			}
+			return true;
+
+		}
+
+        $(document).ready(function () {
+            $("#graph").hide();
+			$("#chartContainer").hide();
+            $('#currencyAndDates').submit(function (event) {
+                event.preventDefault();
+				$("#chartContainer").hide();
+				if(checkingError())
+				{
+                var form = $('#currencyAndDates');
+                var formData = $(form).serialize();
+                var url = "" + $(form).attr('action') + formData;
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: formData,
+                    success: function (response) {
+                        craeteTable(response);
+						$('.tableLink')[0].click();
+                        $("#graph").show();
+                        $("#showGraph").click(function () {
+                            createChart(response);
+							$('.chartLink')[0].click();
+                        });
+						
+                    }
+                });
+				}
+            });
+        });
+
+    </script>
+
+    
+        <!-- Vendor -->
+		
+        <script type="text/javascript" src="stylesheets/vendor/jquery.min.js"></script>
+        <script type="text/javascript" src="stylesheets/vendor/jquery.migrate.min.js"></script>
+        <script type="text/javascript" src="stylesheets/vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="stylesheets/vendor/jquery.smooth-scroll.min.js"></script>
+        <script type="text/javascript" src="stylesheets/vendor/jquery.back-to-top.min.js"></script>
+        <script type="text/javascript" src="stylesheets/vendor/scrollbar/jquery.scrollbar.min.js"></script>
+        <script type="text/javascript" src="stylesheets/vendor/jquery.parallax.min.js"></script>
+        <script type="text/javascript" src="stylesheets/vendor/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
+
+        <!-- General Components and Settings -->
+        <script type="text/javascript" src="javascripts/js/global.min.js"></script>
+        <script type="text/javascript" src="javascripts/js/components/header-sticky.min.js"></script>
+        <script type="text/javascript" src="javascripts/js/components/scrollbar.min.js"></script>
+        <script type="text/javascript" src="javascripts/js/components/faq.min.js"></script>
+        <!--========== END JAVASCRIPTS ==========-->
+
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+﻿<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container" dir="rtl">
+
+    <header>
+        <% include ../partials/header %>
+    </header>
+
+    <main>
+        <div class="jumbotron">
+            <h1> כותרת לגבי מהות התצוגה</h1>
+            <p>
+			<%
+	          var date = new Date();
+	         %>
+	        <span> תאריך ושעת עדכון </span>
+	        <span><%= date%></span>
+			</p>
+        </div>
+    </main>
+	<article class="jumbotron">
+	GRAPH !!!!
+  <table class="table table-bordered">
+  <tr >
+   <th style=" text-align: center"> שם מטבע </th>
+   <th style=" text-align: center"> שער נוכחי </th>
+  </tr>
+
+    <% for (var prop in quetes ) { %>
+	<tr>
+	<td>
+	 <%=prop %>
+	</td>
+	<td>
+    <%= quetes[prop] %>
+<% } %>
+</td>
+</tr>
+  </table>  
+<article>
+
+</body>
+</html>
